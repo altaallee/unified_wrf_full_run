@@ -1,0 +1,9 @@
+        uw                          hrrr                        conus
+mp      (8) thompson                (8) thompson                (8) thompson
+cu      (3) grell-freitas ensemble  (3) grell-freitas ensemble  (6) tiedke
+ra_lw   (4) rrtmg                   (4) rrtmg                   (4) rrtmg
+ra_sw   (4) rrtmg                   (4) rrtmg                   (4) rrtmg
+plb     (1) ysu                     (5) mynn                    (2) myj
+sfclay  (1) revised mm5             (5) mynn                    (2) myj
+surface (4) noah mp                 (3) ruc                     (2) noah lsm
+

@@ -1,0 +1,13 @@
+name: wrf_op
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - metpy=1.3.1
+  - netcdf4
+  - ca-certificates
+  - certifi
+  - openssl
+  - wrf-python
+  - sharppy
+prefix: /home1/alee31/mambaforge/envs/wrf_op
