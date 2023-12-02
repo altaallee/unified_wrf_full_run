@@ -5,7 +5,7 @@ from regions_config import wrf_sounding_stations
 import argparse
 from datetime import datetime, timedelta
 import wrf_calc
-from extra import add_cf_wrf, error_hamdler, read_data_wrf_sounding
+from extra import add_cf_wrf, error_handler, read_data_wrf_sounding
 import cartopy.crs as ccrs
 from metpy.units import units
 import sharppy.sharptab.profile as profile
