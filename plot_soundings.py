@@ -591,17 +591,17 @@ def plot_sounding(data, lon, lat, station_name, fcst_time, init_time, ens):
         ["SFC-1km",    utils.INT2STR(prof.srh1km[0]), utils.INT2STR(sfc_1km_shear), f"{utils.INT2STR(prof.mean_1km[0])}/{utils.INT2STR(prof.mean_1km[1])}", f"{utils.INT2STR(prof.srw_1km[0])}/{utils.INT2STR(prof.srw_1km[1])}", "", ""],
         ["SFC-3km",    utils.INT2STR(prof.srh3km[0]), utils.INT2STR(sfc_3km_shear), f"{utils.INT2STR(prof.mean_3km[0])}/{utils.INT2STR(prof.mean_3km[1])}", f"{utils.INT2STR(prof.srw_3km[0])}/{utils.INT2STR(prof.srw_3km[1])}", "", ""],
         ["Eff Inflow", utils.INT2STR(prof.esrh[0]),   utils.INT2STR(eff_shear),     f"{utils.INT2STR(mean_eff[0])}/{utils.INT2STR(mean_eff[1])}",           f"{utils.INT2STR(srw_eff[0])}/{utils.INT2STR(srw_eff[1])}", "", ""],
-        ["SFC-6km",    "",                            utils.INT2STR(sfc_6km_shear), f"{utils.INT2STR(prof.mean_6km[0])}/{utils.INT2STR(prof.mean_6km[1])}", f"{utils.INT2STR(prof.srw_6km[0])}/{utils.INT2STR(prof.srw_6km[1])}", "", ""],
+        ["SFC-6km",    "",                            utils.INT2STR(sfc_6km_shear), f"{utils.INT2STR(prof.mean_6km[0])}/{utils.INT2STR(prof.mean_6km[1])}", f"{utils.INT2STR(prof.srw_6km[0])}/{utils.INT2STR(prof.srw_6km[1])}", "1km red", "6km blue"],
         ["", "", "", "", "", "", ""],
         ["PWAT",   f"{utils.FLOAT2STR(prof.pwat, 2)}in", "3CAPE", utils.INT2STR(prof.mlpcl.b3km),                            "ConvT",     f"{utils.INT2STR(prof.convT)}°F", ""],
         ["K",      utils.INT2STR(prof.k_idx),            "DCAPE", utils.INT2STR(prof.dcape),                                 "SCP",       utils.FLOAT2STR(prof.scp, 1), ""],
         ["Mid RH", f"{utils.INT2STR(prof.mid_rh)}%",     "DownT", f"{utils.INT2STR(thermo.ctof(prof.dpcl_ttrace.max()))}°F", "STP (cin)", utils.FLOAT2STR(prof.stp_cin, 1), ""],
         ["Low RH", f"{utils.INT2STR(prof.low_rh)}%",     "MeanW", f"{utils.FLOAT2STR(prof.mean_mixr, 1)}g kg$^{{{-1}}}$",    "SHIP",      utils.FLOAT2STR(prof.ship, 1), ""],
         ["", "", "", "", "", "", ""],
-        ["SFC-3km Γ", utils.FLOAT2STR(prof.lapserate_3km, 1),     "Bunkers R", f"{utils.INT2STR(bunkers_right[0])}/{utils.INT2STR(bunkers_right[1])}kt", "WBZ", f"{utils.INT2STR(wbz)}m", ""],
-        ["3-6km Γ",   utils.FLOAT2STR(prof.lapserate_3_6km, 1),   "Bunkers L", f"{utils.INT2STR(bunkers_left[0])}/{utils.INT2STR(bunkers_left[1])}kt",   "FZL", f"{utils.INT2STR(fzl)}m", ""],
-        ["850-500 Γ", utils.FLOAT2STR(prof.lapserate_850_500, 1), "Hazzard", "",                                                                         "MaxT", f"{utils.INT2STR(prof.maxT)}°F", ""],
-        ["700-500 Γ", utils.FLOAT2STR(prof.lapserate_700_500, 1), prof.watch_type, "",                                                                   "Precip Type", "", prof.precip_type],
+        ["SFC-3km Γ", utils.FLOAT2STR(prof.lapserate_3km, 1),     "Bunkers R",  f"{utils.INT2STR(bunkers_right[0])}/{utils.INT2STR(bunkers_right[1])}kt", "WBZ",  f"{utils.INT2STR(wbz)}m", ""],
+        ["3-6km Γ",   utils.FLOAT2STR(prof.lapserate_3_6km, 1),   "Bunkers L",  f"{utils.INT2STR(bunkers_left[0])}/{utils.INT2STR(bunkers_left[1])}kt",   "FZL",  f"{utils.INT2STR(fzl)}m", ""],
+        ["850-500 Γ", utils.FLOAT2STR(prof.lapserate_850_500, 1), "Hazzard",     prof.watch_type,                                                         "MaxT", f"{utils.INT2STR(prof.maxT)}°F", ""],
+        ["700-500 Γ", utils.FLOAT2STR(prof.lapserate_700_500, 1), "Precip Type", prof.precip_type,                                                        "",     "",                              ""],
     ]
     skewt.plot_indices(indices)
 
