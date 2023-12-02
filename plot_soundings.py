@@ -118,7 +118,7 @@ class Skewt():
         self.axes["indices"].barbs(0.85, 0.6, u_1km, v_1km, color="red")
         self.axes["indices"].barbs(0.85, 0.6, u_6km, v_6km, color="blue")
 
-    def plot_barbs(self, pressure, u, v, length=6, linewidth=0.5, **kwargs):
+    def plot_barbs(self, pressure, u, v, length=6, linewidth=1, **kwargs):
         """
         Pots wind barbs on side of skewt.
 
@@ -132,7 +132,7 @@ class Skewt():
             V component of wind in knots.
         length : int (default=6)
             Length of wind barbs.
-        linewidth : int (default=0.5)
+        linewidth : int (default=1)
             Thickness of wind barbs.
         """
         p_barb = [i for i in np.arange(1000, 99, -50) if
