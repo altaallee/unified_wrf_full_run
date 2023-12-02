@@ -459,7 +459,7 @@ class Skewt():
         mask = pressure > 500
         self.axes["theta"].plot(thetae[mask], pressure[mask], color="blue")
 
-    def plot_title(self, station_name, lon, lat, time, start_date):
+    def plot_title(self, station_name, lon, lat, fcst_time, init_time):
         """
         Plots title and time into on skewt.
 
@@ -470,17 +470,17 @@ class Skewt():
         lon : float
             Longitude of station.
         lat : float
-            Lattude of station.
-        time : datetime.datetime
-            Time of skewt.
-        start_date : datetime.datetime
+            Latitude of station.
+        fcst_time : datetime.datetime
+            Forecast time of skewt.
+        init_time : datetime.datetime
             Initalization time of model.
         """
         self.axes["skewt"].set_title(
             f"{station_name} Lon:{round(lon, 1)} Lat:{round(lat, 1)}",
             loc="left")
         self.axes["theta"].set_title(
-            f"Init: {start_date:%Y-%m-%d %H:%MZ}\nValid: {time:%Y-%m-%d %H:%MZ}",
+            f"Init: {init_time:%Y-%m-%d %H:%MZ}\nValid: {fcst_time:%Y-%m-%d %H:%MZ}",
             loc="right")
 
     def save_image(self, path, fname, dpi=100, facecolor="white", **kwargs):
@@ -506,7 +506,7 @@ class Skewt():
         plt.close()
 
 
-def plot_sounding(data, lon, lat, station_name, time, start_date, ens):
+def plot_sounding(data, lon, lat, station_name, fcst_time, init_time, ens):
     point = data["T2"].metpy.cartopy_crs.transform_point(
         lon, lat, ccrs.PlateCarree())
     data = data.metpy.assign_y_x(tolerance=10 * units("meter"))
@@ -523,7 +523,7 @@ def plot_sounding(data, lon, lat, station_name, time, start_date, ens):
 
     skewt = Skewt()
 
-    skewt.plot_title(station_name, lon, lat, time, start_date)
+    skewt.plot_title(station_name, lon, lat, fcst_time, init_time)
 
     # omega
     skewt.plot_omega(prof.pres, prof.omeg)
@@ -610,8 +610,8 @@ def plot_sounding(data, lon, lat, station_name, time, start_date, ens):
     skewt.plot_1_6km_barbs(wind_1km[0], wind_1km[1], wind_6km[0], wind_6km[1])
 
     skewt.save_image(
-        f"../images_wrf/{start_date:%Y%m%d%H}/{ens}/skewt/{station_name}/",
-        f"skewt_{station_name}_{time:%Y%m%d%H%M}")
+        f"../images_wrf/{init_time:%Y%m%d%H}/{ens}/skewt/{station_name}/",
+        f"skewt_{station_name}_{fcst_time:%Y%m%d%H%M}")
 
 
 def plot_hour(init_time, fcst_time, domain, ens):
@@ -624,8 +624,8 @@ def plot_hour(init_time, fcst_time, domain, ens):
             lon=station.lon,
             lat=station.lat,
             station_name=station.name,
-            time=fcst_time,
-            start_date=start_date,
+            fcst_time=fcst_time,
+            init_time=start_date,
             ens=ens)
 
 
