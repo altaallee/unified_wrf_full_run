@@ -417,9 +417,9 @@ class Skewt():
         self.hodo.ax.plot(
             [right_u, left_u], [right_v, left_v], linestyle="", marker="o",
             fillstyle="none", color="black")
-        #self.hodo.ax.plot(
-        #    [mean_u], [mean_v], linestyle=None, marker="s", fillstyle="none",
-        #    color="brown")
+        self.hodo.ax.plot(
+            [mean_u], [mean_v], linestyle=None, marker="s", fillstyle="none",
+            color="brown")
         self.hodo.ax.text(
             right_u, right_v, f"  RM", fontsize=8, ha="left", va="center")
         self.hodo.ax.text(
@@ -558,7 +558,7 @@ def plot_sounding(data, lon, lat, station_name, time, start_date, ens):
     skewt.plot_hodo(prof.hght / 1000, prof.u, prof.v)
     skewt.plot_storm_movers(
         prof.bunkers[0], prof.bunkers[1], prof.bunkers[2], prof.bunkers[3],
-        *utils.vec2comp(prof.srw_lcl_el[0], prof.srw_lcl_el[1]))
+        *utils.vec2comp(prof.mean_lcl_el[0], prof.mean_lcl_el[1]))
     ebot_wind = interp.components(prof, prof.ebottom)
     etop_wind = interp.components(prof, prof.etop)
     skewt.plot_hodo_inflow(
