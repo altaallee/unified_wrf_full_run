@@ -79,7 +79,8 @@ class Skewt():
         hodo_pos = self.axes["hodo"].get_position()
         theta_pos = self.axes["theta"].get_position()
         self.axes["hodo"].set_position(
-            (hodo_pos.x0, hodo_pos.y0, theta_pos.x0 - hodo_pos.x0, hodo_pos.height))
+            (hodo_pos.x0, hodo_pos.y0, theta_pos.x0 - hodo_pos.x0,
+             hodo_pos.height))
         self.hodo = Hodograph(self.axes["hodo"])
         self.hodo.add_grid(increment=20, linestyle="-", linewidth=0.5)
         for i in [20, 40, 60, 80]:
@@ -215,8 +216,8 @@ class Skewt():
             u, v, height_new * units(""),
             intervals=np.array([0, 3, 6, 9, 99]) * units(""),
             colors=["red", "green", "orange", "blue"], linewidth=1.5)
-        heights_label = [i for i in [1, 2, 3, 6, 9] if
-                         (i > height[0]) & (i < height[-1])]
+        heights_label = [
+            i for i in [1, 2, 3, 6, 9] if (i > height[0]) & (i < height[-1])]
         u_label = wrf_calc.interpolate_1d(height_new, u, heights_label)
         v_label = wrf_calc.interpolate_1d(height_new, v, heights_label)
         for h, x, y in zip(heights_label, u_label, v_label):
@@ -540,8 +541,7 @@ def plot_sounding(data, lon, lat, station_name, time, start_date, ens):
     skewt.plot_lines_skewt(
         prof.mlpcl.ptrace, prof.mlpcl.ttrace, color="darkred", linewidth=1,
         linestyle="--")
-    skewt.plot_surface_values(
-        prof.pres[0], prof.tmpc[0], prof.dwpc[0])
+    skewt.plot_surface_values(prof.pres[0], prof.tmpc[0], prof.dwpc[0])
     skewt.plot_heights(prof.pres, prof.hght)
     skewt.plot_inflow(
         prof.ebottom, prof.etop, prof.ebotm, prof.etopm, prof.esrh[0])
