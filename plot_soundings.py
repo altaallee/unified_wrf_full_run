@@ -477,7 +477,7 @@ class Skewt():
             Initalization time of model.
         """
         self.axes["skewt"].set_title(
-            f"{station_name} Lon:{round(lon, 1)} Lat:{round(lat, 1)}",
+            f"{station_name} Lon:{round(lon, 2)} Lat:{round(lat, 2)}",
             loc="left")
         self.axes["theta"].set_title(
             f"Init: {init_time:%Y-%m-%d %H:%MZ}\nValid: {fcst_time:%Y-%m-%d %H:%MZ}",
