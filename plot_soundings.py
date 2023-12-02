@@ -26,9 +26,9 @@ parser.add_argument(
     "--date", type=int, required=True,
     help="Starting date of WRF run. (YYYYMMDDHH)")
 parser.add_argument(
-    "--hours", type=int, required=True, help="Total hours to run model.")
+    "--hours", type=int, required=True, help="Total hours to plot data.")
 parser.add_argument(
-    "--ens", type=str, default="", help="Ensemble name.")
+    "--ens", type=str, default="", help="Ensemble member.")
 args = parser.parse_args()
 
 start_date = datetime.strptime(str(args.date), "%Y%m%d%H")
@@ -276,7 +276,7 @@ class Skewt():
         bottom_hgt : float
             Bottom height of inflow layer in meters.
         top_hgt : float
-            Bottom height of inflow layer in meters.
+            Top height of inflow layer in meters.
         srh : float
             SRH of inflow layer.
         """
@@ -524,9 +524,11 @@ def plot_sounding(data, lon, lat, station_name, time, start_date, ens):
 
     skewt.plot_title(station_name, lon, lat, time, start_date)
 
+    # omega
     skewt.plot_omega(prof.pres, prof.omeg)
     skewt.plot_dgz(prof.dgz_pbot, prof.dgz_ptop)
 
+    # skewt
     skewt.plot_lines_skewt(prof.pres, prof.wetbulb, color="cyan", linewidth=1)
     skewt.plot_lines_skewt(
         prof.dpcl_ptrace, prof.dpcl_ttrace, color="purple", linewidth=1,
@@ -549,8 +551,10 @@ def plot_sounding(data, lon, lat, station_name, time, start_date, ens):
     skewt.plot_sounding_levels(
         prof.mlpcl.lclpres, prof.mlpcl.lfcpres, prof.mlpcl.elpres)
 
+    # barbs
     skewt.plot_barbs(prof.pres, prof.u, prof.v)
 
+    # hodo
     skewt.plot_hodo(prof.hght / 1000, prof.u, prof.v)
     skewt.plot_storm_movers(
         prof.bunkers[0], prof.bunkers[1], prof.bunkers[2], prof.bunkers[3],
@@ -562,8 +566,10 @@ def plot_sounding(data, lon, lat, station_name, time, start_date, ens):
         prof.bunkers[1])
     skewt.plot_critical_angle(prof.critical_angle)
 
+    # theta
     skewt.plot_thetae(prof.pres, prof.thetae)
 
+    # indicies
     sfc_1km_shear = utils.mag(prof.sfc_1km_shear[0], prof.sfc_1km_shear[1])
     sfc_3km_shear = utils.mag(prof.sfc_3km_shear[0], prof.sfc_3km_shear[1])
     sfc_6km_shear = utils.mag(prof.sfc_6km_shear[0], prof.sfc_6km_shear[1])
