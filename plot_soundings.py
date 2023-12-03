@@ -631,7 +631,7 @@ def plot_hour(init_time, fcst_time, domain, ens):
 
 
 def main():
-    with mp.Pool(maxtasksperchild=1) as pool:
+    with mp.Pool(processes=24, maxtasksperchild=1) as pool:
         for domain in np.arange(
                 config.wrf_max_domain, config.wrf_min_domain - 1, -1):
             for time in pd.date_range(
