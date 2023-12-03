@@ -353,14 +353,15 @@ class Skewt():
         omega : list
             Omega values in Pa / s
         """
+        width = lambda p, w: 10**(np.log10(p) + w / 2) - 10**(np.log10(p) - w / 2)
         mask_pos = (omega > 0) & (pressure > 100)
         mask_neg = (omega < 0) & (pressure > 100)
         self.axes["omega"].barh(
-            pressure[mask_pos], omega[mask_pos], color="blue", height=10,
-            clip_on=False, **kwargs)
+            pressure[mask_pos], omega[mask_pos], color="blue",
+            height=width(pressure[mask_pos], 0.01), clip_on=False, **kwargs)
         self.axes["omega"].barh(
-            pressure[mask_neg], omega[mask_neg], color="orange", height=10,
-            clip_on=False, **kwargs)
+            pressure[mask_neg], omega[mask_neg], color="orange",
+            height=width(pressure[mask_neg], 0.01), clip_on=False, **kwargs)
 
     def plot_sounding_levels(self, lcl, lfc, el):
         """
