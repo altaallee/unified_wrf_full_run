@@ -1,7 +1,7 @@
 #!/bin/bash
 
-##PBS -N wrf_postprocess_maps
-##PBS -o pbs_out_wrf_postprocess_maps
+##PBS -N wrf_postprocess
+##PBS -o pbs_out_wrf_postprocess
 ##PBS -S /bin/bash
 ##PBS -l select=1:ncpus=24:model=has
 ##PBS -q devel
@@ -24,3 +24,4 @@ source activate wrf_op
 python3 add_init.py --date $DATE$RUN --hours $HOURS --ens $ENS
 python3 delete_old_files.py
 python3 -W ignore plot_maps_wrf.py --date $DATE$RUN --hours $HOURS --ens $ENS
+python3 -W ignore plot_soundings.py --date $DATE$RUN --hours $HOURS --ens $ENS
