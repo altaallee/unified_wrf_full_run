@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#PBS -N wrf 
+#PBS -N wrf_2
 #PBS -o pbs_out_wrf_hrrr
 #PBS -S /bin/bash
 #PBS -l select=30:ncpus=28:model=bro
 ##PBS -q devel
-#PBS -l walltime=7:00:00
+#PBS -l walltime=6:00:00
 #PBS -j oe
 #PBS -W group_list=s2395
 #PBS -m abe

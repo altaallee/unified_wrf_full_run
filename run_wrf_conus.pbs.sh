@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#PBS -N wrf 
+#PBS -N wrf_3 
 #PBS -o pbs_out_wrf_conus
 #PBS -S /bin/bash
 #PBS -l select=30:ncpus=28:model=bro
