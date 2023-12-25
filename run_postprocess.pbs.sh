@@ -5,7 +5,7 @@
 ##PBS -S /bin/bash
 ##PBS -l select=1:ncpus=24:model=has
 ##PBS -q devel
-##PBS -l walltime=1:00:00
+##PBS -l walltime=1:05:00
 ##PBS -j oe
 ##PBS -W group_list=s2395
 ##PBS -m abe
@@ -25,3 +25,4 @@ python3 add_init.py --date $DATE$RUN --hours $HOURS --ens $ENS
 python3 delete_old_files.py
 python3 -W ignore plot_maps_wrf.py --date $DATE$RUN --hours $HOURS --ens $ENS
 python3 -W ignore plot_soundings.py --date $DATE$RUN --hours $HOURS --ens $ENS
+python3 -W ignore save_time_series.py --date $DATE$RUN --ens $ENS

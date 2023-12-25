@@ -149,17 +149,17 @@ metgrid_id=$(qsub run_metgrid.pbs.sh)
 
 if [ $uw = true ]; then
     wrf_uw_id=$(qsub -W depend=afterok:$metgrid_id run_wrf_uw.pbs.sh)
-    maps_uw_id=$(qsub -W depend=afterok:$wrf_uw_id -N wrf_postprocess_1 -o pbs_out_wrf_postprocess_uw -S /bin/bash -l select=1:ncpus=24:model=has -l walltime=1:00:00 -j oe -W group_list=s2395 -m abe -v DATE=$wrf_date,RUN=$wrf_run,HOURS=$total_hours,ENS=uw $(pwd)/run_postprocess.pbs.sh)
+    maps_uw_id=$(qsub -W depend=afterok:$wrf_uw_id -N wrf_postprocess_1 -o pbs_out_wrf_postprocess_uw -S /bin/bash -l select=1:ncpus=24:model=has -l walltime=1:05:00 -j oe -W group_list=s2395 -m abe -v DATE=$wrf_date,RUN=$wrf_run,HOURS=$total_hours,ENS=uw $(pwd)/run_postprocess.pbs.sh)
 fi
 
 if [ $hrrr = true ]; then
     wrf_hrrr_id=$(qsub -W depend=afterok:$metgrid_id run_wrf_hrrr.pbs.sh)
-    maps_hrrr_id=$(qsub -W depend=afterok:$wrf_hrrr_id -N wrf_postprocess_2 -o pbs_out_wrf_postprocess_hrrr -S /bin/bash -l select=1:ncpus=24:model=has -l walltime=1:00:00 -j oe -W group_list=s2395 -m abe -v DATE=$wrf_date,RUN=$wrf_run,HOURS=$total_hours,ENS=hrrr $(pwd)/run_postprocess.pbs.sh)
+    maps_hrrr_id=$(qsub -W depend=afterok:$wrf_hrrr_id -N wrf_postprocess_2 -o pbs_out_wrf_postprocess_hrrr -S /bin/bash -l select=1:ncpus=24:model=has -l walltime=1:05:00 -j oe -W group_list=s2395 -m abe -v DATE=$wrf_date,RUN=$wrf_run,HOURS=$total_hours,ENS=hrrr $(pwd)/run_postprocess.pbs.sh)
 fi
 
 if [ $conus = true ]; then
     wrf_conus_id=$(qsub -W depend=afterok:$metgrid_id run_wrf_conus.pbs.sh)
-    maps_conus_id=$(qsub -W depend=afterok:$wrf_conus_id -N wrf_postprocess_3 -o pbs_out_wrf_postprocess_conus -S /bin/bash -l select=1:ncpus=24:model=has -l walltime=1:00:00 -j oe -W group_list=s2395 -m abe -v DATE=$wrf_date,RUN=$wrf_run,HOURS=$total_hours,ENS=conus $(pwd)/run_postprocess.pbs.sh)
+    maps_conus_id=$(qsub -W depend=afterok:$wrf_conus_id -N wrf_postprocess_3 -o pbs_out_wrf_postprocess_conus -S /bin/bash -l select=1:ncpus=24:model=has -l walltime=1:05:00 -j oe -W group_list=s2395 -m abe -v DATE=$wrf_date,RUN=$wrf_run,HOURS=$total_hours,ENS=conus $(pwd)/run_postprocess.pbs.sh)
 fi
 
 qstat -u alee31
