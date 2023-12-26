@@ -24,5 +24,5 @@ source activate wrf_op
 python3 add_init.py --date $DATE$RUN --hours $HOURS --ens $ENS
 python3 delete_old_files.py
 python3 -W ignore plot_maps_wrf.py --date $DATE$RUN --hours $HOURS --ens $ENS
-python3 -W ignore plot_soundings.py --date $DATE$RUN --hours $HOURS --ens $ENS
-python3 -W ignore save_time_series.py --date $DATE$RUN --ens $ENS
+python3 -W ignore plot_soundings_wrf.py --date $DATE$RUN --hours $HOURS --ens $ENS
+python3 -W ignore save_time_series_wrf.py --date $DATE$RUN --ens $ENS

@@ -4,9 +4,11 @@ extra.py
 mapper.py
 plot_maps_mpas.py
 plot_maps_wrf.py
+plot_soundings_wrf.py
 products.py
 __pycache__
 regions_config.py
+save_time_series_wrf.py
 stations.txt
 variable_config.py
 wrf_calc.py
