@@ -13,7 +13,7 @@
  j_parent_start    =   1,  100, 165,
  e_we              =  500, 700, 499,
  e_sn              =  450, 700, 499,
- geog_data_res = 'default','default','default',
+ geog_data_res = 'modis_2013_2022_nz+default','modis_2013_2022_nz+default','modis_2013_2022_nz+default',
  dx = 9000,
  dy = 9000,
  map_proj = 'lambert',
